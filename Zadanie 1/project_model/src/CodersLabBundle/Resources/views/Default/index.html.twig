@@ -1,1 +1,8 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block body %}
+Post:<hr\>
+{{ post.title }}
+<hr\>
+{{ dump(post) }}
+{% endblock body %}
