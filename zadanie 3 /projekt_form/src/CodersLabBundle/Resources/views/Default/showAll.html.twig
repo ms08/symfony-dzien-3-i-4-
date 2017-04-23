@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    All posts:<br/>
+    {% for post in posts %}
+        <a href="{{ url('showPost',{'id':post.id}) }}">
+        {{ post.title }} - {{ url('showPost',{'id':post.id}) }}
+        </a><hr/>
+    {% endfor %}
+{% endblock %}

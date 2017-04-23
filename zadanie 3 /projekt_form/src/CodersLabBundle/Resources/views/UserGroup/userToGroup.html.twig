@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    Put {{user.name}} to group:<br/>
+    {% for group in groups %}
+        {% if group not in user.groups %}
+            [+]<a href="{{
+                path(
+                    "putUserToGroup",
+                    {
+                        "user_id":user.id,
+                        "group_id":group.id
+                    }
+                )}}">
+                {{group.name}}
+            </a>
+        {% else %}
+            [-]<a href="{{
+                path(
+                    "removeUserFromGroup",
+                    {
+                        "user_id":user.id,
+                        "group_id":group.id
+                    }
+                )}}">
+                {{group.name}}
+            </a>
+        {% endif %}
+        <br/>
+    {% else %}
+        user in all group
+    {% endfor %}
+{% endblock %}

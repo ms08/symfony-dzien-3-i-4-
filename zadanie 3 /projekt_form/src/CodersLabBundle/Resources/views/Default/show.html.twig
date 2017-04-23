@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if post == false %}
+        Post not found!
+    {% else %}
+        Post(#{{ post.id }}):<hr/>
+        {{ post.title }}<br/>
+        {{ post.text }}<br/>
+        author: <b>{{ post.author.name }}</b>
+    {% endif %}
+    <hr/>
+    {{ dump(post) }}
+{% endblock %}

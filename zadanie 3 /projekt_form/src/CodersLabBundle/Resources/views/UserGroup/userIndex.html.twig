@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <fieldset>
+        <legend>Users:</legend>
+        {% for user in users %}
+            <a href="{{path("showUser",{'id':user.id})}}">
+                {{ user.name }}
+            </a><br/>
+        {% else %}
+            [empty]
+        {% endfor %}
+    </fieldset>
+{% endblock %}

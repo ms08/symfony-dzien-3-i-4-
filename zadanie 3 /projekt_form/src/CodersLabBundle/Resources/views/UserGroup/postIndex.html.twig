@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <fieldset>
+        <legend>Posts:</legend>
+        {% for post in posts %}
+            {{ post.title }}<br/>
+        {% else %}
+            [empty]
+        {% endfor %}
+    </fieldset>
+{% endblock %}

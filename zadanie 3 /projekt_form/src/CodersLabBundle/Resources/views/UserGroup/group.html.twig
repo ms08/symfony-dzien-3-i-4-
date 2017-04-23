@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    Group:<br/>
+    ID: {{group.id}}<br/>
+    Name: {{group.name}}<br/>
+    <fieldset>
+        <legend>Group members:</legend>
+        {% for user in group.users %}
+            <a href="{{path("showUser",{"id":user.id})}}">
+                {{ user.name }}
+            </a><br/>
+        {% else %}
+            [empty]
+        {% endfor %}
+    </fieldset>
+{% endblock %}

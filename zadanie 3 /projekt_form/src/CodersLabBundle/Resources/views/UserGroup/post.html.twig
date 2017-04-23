@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <fieldset>
+        <legend>{{post.title}}</legend>
+        {{post.text}}
+    </fieldset>
+    {% if post.author %}
+        <a href="{{path("showUser",{'id':post.author.id})}}">
+            {{ post.author.name }}
+        </a>
+    {% endif %}
+{% endblock %}
