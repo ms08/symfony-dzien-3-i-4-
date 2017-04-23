@@ -4,7 +4,12 @@ namespace CodersLabBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use CodersLabBundle\Entity\Post;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
+
+use CodersLabBundle\Entity\Book;
+
+
 
 class BookController extends Controller
 {
@@ -40,7 +45,7 @@ class BookController extends Controller
     $posts = $repo->findAll();
 
     return $this->render(
-      'CodersLabBundle:views1:showAll.html.twig', array('posts'=>$posts)
+      'CodersLabBundle:book:showAll.html.twig', array('posts'=>$posts)
     );
   }
 
@@ -51,18 +56,44 @@ class BookController extends Controller
 
 /**
  * @Route("/newBook")
+ *@Template()
  */
 
 
  public function newBookAction()
  {
-   return $this->render(
-     'CodersLabBundle:views1:newBook.html.twig', array('posts'=>$posts)
-   );
+  //  return $this->render(
+  //    'CodersLabBundle:views1:newBook.html.twig'
+  //  );
+  return [];
 
  }
 
+ /**
+  * @Route("/createBook", name="createBook")
+  *@Template()
+  */
 
+public function createBookAction(Request $req){
+  $title = $req->request->get('title');
+  $desc = $req->request->get('description');
+  $rating = $req->request->get('rating');
+
+$book= new Book();
+
+$book->setTitle($title);
+$book->setDescription($desc);
+$book->setRating($rating);
+
+$em = $this->getDoctrine()->getManager();
+
+$em->persist($book);
+$em->flush();
+
+
+  return ['title' => $title, 'description'=>$desc,'rating'=>$rating];
+
+}
 
 
 

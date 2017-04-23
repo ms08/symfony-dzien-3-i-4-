@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<form action="{{ path('createBook')}}" method="post">
+  <input type="text" placeholder="title" name="title"></br>
+  <input type="text" placeholder="description" name="description"></br>
+  <input type="text" placeholder="rating" name="rating"></br>
+
+  <button type="submit"> GO </button>
+</form>
+{% endblock body %}
